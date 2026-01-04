@@ -3,7 +3,7 @@ import { Label } from "@radix-ui/react-dropdown-menu";
 import React, { Fragment } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
-function ProductFilter() {
+function ProductFilter({ filter, handlefilter }) {
   return (
     <div className="bg-background rounded-lg shadow-sm">
       <div className="p-4 border-b">
@@ -18,7 +18,9 @@ function ProductFilter() {
             <div className="grid gap-2 mt-2">
               {filterOptions[keyItem].map((option) => (
                 <Label className="flex items-center gap-2 font-medium">
-                  <Checkbox />
+                  <Checkbox
+                    onCheckedChange={() => handlefilter(keyItem, option.id)}
+                  />
                   {option.label}
                 </Label>
               ))}
